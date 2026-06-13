@@ -70,11 +70,12 @@ def railfence_decrypt():
     decrypted_text = railfence_cipher.rail_fence_decrypt(cipher_text, key)
     return jsonify({'decrypted_text': decrypted_text})
 
-    # ==========================================
-# 4. PLAYFAIR CIPHER ALGORITHM (Thêm mới - Trang 85)
+  # ==========================================
+# 4. PLAYFAIR CIPHER ALGORITHM (Cập nhật đầy đủ)
 # ==========================================
 playfair_cipher = PlayfairCipher()
 
+# Route 1: Mã hóa (Trang 85)
 @app.route('/api/playfair/encrypt', methods=['POST'])
 def playfair_encrypt():
     data = request.json
@@ -83,6 +84,7 @@ def playfair_encrypt():
     encrypted_text = playfair_cipher.playfair_encrypt(plain_text, key)
     return jsonify({'encrypted_text': encrypted_text})
 
+# Route 2: Giải mã (Trang 85)
 @app.route('/api/playfair/decrypt', methods=['POST'])
 def playfair_decrypt():
     data = request.json
@@ -90,6 +92,14 @@ def playfair_decrypt():
     key = data['key']
     decrypted_text = playfair_cipher.playfair_decrypt(cipher_text, key)
     return jsonify({'decrypted_text': decrypted_text})
+
+# Route 3: Tạo và hiển thị ma trận 5x5 (Mới bổ sung theo yêu cầu)
+@app.route('/api/playfair/creatematrix', methods=['POST'])
+def playfair_create_matrix():
+    data = request.json
+    key = data['key']
+    matrix = playfair_cipher.generate_matrix(key)
+    return jsonify({'matrix': matrix})
 # ==========================================
 # MAIN FUNCTION
 # ==========================================

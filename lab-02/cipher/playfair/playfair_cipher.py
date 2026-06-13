@@ -2,6 +2,7 @@ class PlayfairCipher:
     def __init__(self):
         pass
 
+    # Hàm tạo ma trận 5x5 từ khóa key (Trang 84)
     def generate_matrix(self, key):
         key = key.upper().replace('J', 'I')
         matrix = []
@@ -20,6 +21,7 @@ class PlayfairCipher:
 
         return [matrix[i:i+5] for i in range(0, 25, 5)]
 
+    # Hàm tìm vị trí hàng và cột của một ký tự trong ma trận (Trang 84)
     def find_position(self, matrix, char):
         for row in range(5):
             for col in range(5):
@@ -27,6 +29,7 @@ class PlayfairCipher:
                     return row, col
         return None
 
+    # Hàm chuẩn bị văn bản trước khi mã hóa (Trang 84)
     def prepare_text(self, text):
         text = text.upper().replace('J', 'I')
         prepared = ""
@@ -45,6 +48,7 @@ class PlayfairCipher:
             i += 1
         return prepared
 
+    # Hàm thực hiện mã hóa Playfair (Trang 85)
     def playfair_encrypt(self, plain_text, key):
         matrix = self.generate_matrix(key)
         prepared_text = self.prepare_text(plain_text)
@@ -67,6 +71,7 @@ class PlayfairCipher:
 
         return cipher_text
 
+    # Hàm thực hiện giải mã Playfair (Trang 85)
     def playfair_decrypt(self, cipher_text, key):
         matrix = self.generate_matrix(key)
         plain_text = ""
