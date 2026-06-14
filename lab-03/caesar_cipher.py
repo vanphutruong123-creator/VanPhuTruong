@@ -3,8 +3,8 @@ import os
 import ctypes
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5.QtCore import Qt
-# Nạp lớp giao diện từ file caesar.py bạn đã dịch
-from caesar import Ui_MainWindow 
+# Nạp lớp giao diện từ thư mục con ui
+from ui.caesar import Ui_MainWindow 
 import requests
 
 class MyApp(QMainWindow):
@@ -20,7 +20,7 @@ class MyApp(QMainWindow):
     def call_api_encrypt(self):
         url = "http://127.0.0.1:5000/api/caesar/encrypt"
         
-        # Lấy dữ liệu từ các ô nhập liệu trên giao diện
+        # ĐÃ SỬA: Dùng đúng tên biến txt_plain trên giao diện của bạn
         payload = {
             "plain_text": self.ui.txt_plain.toPlainText(),
             "key": self.ui.txt_key.text()
@@ -31,7 +31,8 @@ class MyApp(QMainWindow):
             response = requests.post(url, json=payload)
             if response.status_code == 200:
                 data = response.json()
-                # Hiển thị chuỗi đã mã hóa lên ô CipherText
+                # ĐÃ SỬA: Dùng đúng tên biến txt_cipher trên giao diện của bạn
+                # Dùng setPlainText thay vì setText cho QTextEdit
                 self.ui.txt_cipher.setPlainText(data["encrypted_message"])
                 
                 # Hiển thị thông báo thành công
@@ -48,7 +49,7 @@ class MyApp(QMainWindow):
     def call_api_decrypt(self):
         url = "http://127.0.0.1:5000/api/caesar/decrypt"
         
-        # Lấy dữ liệu mã hóa và khóa để gửi đi giải mã
+        # ĐÃ SỬA: Dùng đúng tên biến txt_cipher trên giao diện của bạn
         payload = {
             "cipher_text": self.ui.txt_cipher.toPlainText(),
             "key": self.ui.txt_key.text()
@@ -59,7 +60,7 @@ class MyApp(QMainWindow):
             response = requests.post(url, json=payload)
             if response.status_code == 200:
                 data = response.json()
-                # Trả kết quả chữ ban đầu về ô Plain Text
+                # ĐÃ SỬA: Dùng đúng tên biến txt_plain trên giao diện của bạn
                 self.ui.txt_plain.setPlainText(data["decoded_message"])
                 
                 # Hiển thị thông báo thành công
