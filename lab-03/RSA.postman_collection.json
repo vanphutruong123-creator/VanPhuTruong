@@ -1,0 +1,179 @@
+{
+  "info": {
+    "_postman_id": "a41bc978-664b-4d62-8f0d-dc0b050ddaef",
+    "name": "RSA",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53412173",
+    "_collection_link": "https://go.postman.co/collection/53412173-a41bc978-664b-4d62-8f0d-dc0b050ddaef?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "generate_keys",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"message\": \"Keys generated successfully\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/rsa/generate_keys",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "rsa",
+            "generate_keys"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "encrypt",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"message\": \"HUTECH University\",\r\n    \"key_type\": \"public\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/rsa/encrypt",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "rsa",
+            "encrypt"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "dencrypt",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"ciphertext\": \"15c45e3fdd4efcaf194745463edb4399d3a33e99214ecc5819e4c296498e283176c7c54e5dbaaaf1c8b94602291e4e070e184fbcfe93ced3dd3f6a65523e7e94ca1e54d82bcdec5a7bd9ce0f1f7d3c397e0dd4b9fb766fd36aa04f0544e4fca06e758007be22f9bfc0afc82e88ff8058645771f3d78fb20b7b9b78b0b6721609\",\r\n    \"key_type\": \"private\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/rsa/decrypt",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "rsa",
+            "decrypt"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sign",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"message\": \"HUTECH University\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/rsa/sign",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "rsa",
+            "sign"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "verify",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"message\": \"HUTECH University\",\r\n    \"signature\": \"5ba9e31e57269d0fc65389c06bc8b3a5f0121e8da0f15f5d6f5ab704913108dabb9779e864d3b2af30327c504ab0efdc2876e374e88bbd9685ef3f43559aef8d6f1392df41edbc08eaf740afed18f4e35228a672509a67bb4dd0fec52388afd409dce07cc29d9f1d4b2b696d536e787c28aea06a68d34aae780d0e17aeb82243\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/rsa/verify",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "rsa",
+            "verify"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
